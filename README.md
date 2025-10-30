@@ -16,7 +16,7 @@ Docker container will be created and the output of the script will be printed to
 
 ----------------------------------------------------------------------
 
-The script "test_ryanair.py" can also be run in non-headless mode to view the actions taken by the script, (Note: need playwright installed locally for this).
+The script "test_ryanair.py" can also be run in non-headless mode to visually see the actions taken by the script, (Note: need playwright installed locally for this).
 Non-headless mode can be run with 2 steps:
 
 Update line 28 of test_ryanair.py to the following:
