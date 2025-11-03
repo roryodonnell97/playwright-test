@@ -63,8 +63,8 @@ async def run(playwright: Playwright) -> None:
     # Choose flight dates, select 3rd month available & 2nd + 5th day available (3 night stay)
     print(" -> Choose flight dates")
     await page.locator("div.m-toggle__month").nth(2).click()
-    await page.locator("div.calendar-body__cell").nth(1).click()
-    await page.locator("div.calendar-body__cell").nth(4).click()
+    await page.get_by_text("2", exact=True).first.click()
+    await page.get_by_text("5", exact=True).first.click()
 
     # Increase number of passengers to 2 adults
     print(" -> Increase number of passengers to 2 adults")
@@ -179,11 +179,11 @@ async def run(playwright: Playwright) -> None:
     await page.get_by_role("button", name="Next flight").click()
     await page.wait_for_selector(".passenger-carousel__orig-dest--active:text('MAD - DUB')", state="visible")
 
-    # For return flight, select 2nd and 3rd seats available
+    # For return flight, select 5th and 6th seats available
     print("\nStage 7 - Choose any available seats and click [Continue]")
-    print(" -> For return flight, select 2nd and 3rd seats available")
-    await click_seat_and_wait(page, 2)
-    await click_seat_and_wait(page, 3)
+    print(" -> For return flight, select 5th and 6th seats available")
+    await click_seat_and_wait(page, 5)
+    await click_seat_and_wait(page, 6)
 
     # Click "Continue" button
     print(" -> Click 'Continue' button")
@@ -209,6 +209,7 @@ async def run(playwright: Playwright) -> None:
 async def main() -> None:
     async with async_playwright() as playwright:
         await run(playwright)
+
 
 
 asyncio.run(main())
